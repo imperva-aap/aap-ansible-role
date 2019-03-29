@@ -1,0 +1,23 @@
+---
+
+- name: Prevoty | Create Prevoty Directory
+  file:
+    path: "{{ prevoty_install_path }}"
+    state: directory
+    owner: "{{ prevoty_appserver_user }}"
+    group: "{{ prevoty_appserver_group }}"
+
+- name: Prevoty | Copy Prevoty Agent Jar
+  copy:
+    src: "prevoty-agent-{{prevoty_version}}.jar"
+    dest: "{{ prevoty_install_path }}/prevoty-agent-{{prevoty_version}}.jar"
+    owner: "{{ prevoty_appserver_user }}"
+    group: "{{ prevoty_appserver_group }}"
+
+- name: Prevoty | Copy Prevoty RASP Jar
+  copy:
+    src: "prevoty-rasp-{{prevoty_version}}.jar"
+    dest: "{{ prevoty_install_path }}/prevoty-rasp-{{prevoty_version}}.jar"
+    owner: "{{ prevoty_appserver_user }}"
+    group: "{{ prevoty_appserver_group }}"
+  when: prevoty_method == "agent"

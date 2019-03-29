@@ -1,0 +1,5 @@
+export CATALINA_OPTS="$CATALINA_OPTS -javaagent:{{prevoty_install_path}}/prevoty-agent-{{prevoty_version}}.jar \
+  -Dprevoty_config={{prevoty_install_path}}/prevoty_config.json \
+  -Dprevoty_log_config={{prevoty_install_path}}/prevoty_logging.json \
+  -Dprevoty_agentrasp \
+  -Dprevoty_raspjarpath={{prevoty_install_path}}/prevoty-rasp-{{prevoty_version}}.jar"

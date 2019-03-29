@@ -1,0 +1,26 @@
+---
+
+- name: Prevoty | Insert JVM Arguments
+  blockinfile:
+    path: "{{prevoty_appserver_path}}/bin/setenv.sh"
+    marker: "# --- {mark} Ansible Managed Prevoty Arguments ---"
+    backup: yes
+    block: |
+      {{ lookup('template', 'setenv.sh.j2') }}
+    state: present
+  notify: restart tomcat
+
+- name: Prevoty | Copy Prevoty Config
+  copy:
+    src: "prevoty_config.json"
+    dest: "{{ prevoty_install_path }}/prevoty_config.json"
+    owner: "{{ prevoty_appserver_user }}"
+    group: "{{ prevoty_appserver_group }}"
+
+- name: Prevoty | Copy Prevoty Logging Config
+  copy:
+    src: "prevoty_logging.json"
+    dest: "{{ prevoty_install_path }}/prevoty_logging.json"
+    owner: "{{ prevoty_appserver_user }}"
+    group: "{{ prevoty_appserver_group }}"
+  notify: restart tomcat

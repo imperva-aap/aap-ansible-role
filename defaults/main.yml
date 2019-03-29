@@ -1,0 +1,13 @@
+---
+## General
+
+prevoty_version: 3.10.0
+prevoty_method: "agent"
+prevoty_appserver: "tomcat"
+prevoty_appserver_user: "tomcat"
+prevoty_appserver_group: "tomcat"
+prevoty_appserver_path: "/opt/tomcat"
+
+## Configuration items
+prevoty_log_location: "{{prevoty_appserver_path}}/logs/"
+prevoty_install_path: "{{prevoty_appserver_path}}/prevoty/"

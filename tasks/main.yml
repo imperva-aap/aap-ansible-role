@@ -1,0 +1,13 @@
+---
+
+- name: Prevoty | Install
+  become: yes
+  include: install.yml
+  tags:
+    - install
+
+- name: Prevoty | Config
+  become: yes
+  include: config.yml
+  tags:
+    - config
